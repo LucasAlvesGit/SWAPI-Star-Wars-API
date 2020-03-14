@@ -1,17 +1,27 @@
 <template>
-  <q-card
-    class="my-card text-white"
-    style="background: radial-gradient(circle, #35a2ff 0%, #014a88 100%)"
-  >
-    <q-card-section
-      v-for="Personagem in Personagens"
-      :key="Personagem.name"
+  <div class="col-3">
+    <q-card row reverse
+      class="my-card text-white"
+      style="background-color: #0C0C0C;"
     >
-      <div class="text-h6">{{Personagem.name}}</div>
-      <div class="text-subtitle2">{{Personagem.species}}, {{Personagem.homeworld}} </div>
-    </q-card-section>
-  </q-card>
+      <q-card-section
+        v-for="Personagem in Personagens"
+        :key="Personagem.name"
+      >
+        <div class="text-h6">{{Personagem.name}}</div>
+        <div class="text-subtitle2" style="color: #FFC300">{{Personagem.species}}, {{Personagem.homeworld}} </div>
+      </q-card-section>
+    </q-card>
+  </div>
 </template>
+
+<style lang="sass" scoped>
+.my-card
+  width: 100%
+  max-width: 250px
+  padding: 5px
+  margin: 25px
+</style>
 
 <script>
 export default {

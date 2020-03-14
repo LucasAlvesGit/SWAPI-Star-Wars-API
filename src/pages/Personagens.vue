@@ -1,14 +1,14 @@
 <template>
-  <q-card
+  <q-card flex
     class="my-card text-white"
-    style="background: radial-gradient(circle, #35a2ff 0%, #014a88 100%)"
+    style="background-color: #0C0C0C;"
   >
     <q-card-section
       v-for="Personagem in Personagens"
       :key="Personagem.name"
     >
       <div class="text-h6">{{Personagem.name}}</div>
-      <div class="text-subtitle2">{{planeta}} </div>
+      <div class="text-subtitle2" style="color: #FFC300">{{Personagem.species}}, {{Personagem.homeworld}} </div>
     </q-card-section>
   </q-card>
 </template>
@@ -29,29 +29,20 @@ export default {
         .then(res => {
           this.Personagens = (res.data.results)
         })
-
-      for (let i = 0; i >= this.Personagens.length; i++) {
-        this.$axios.get(this.Personagens[i].homeworld)
-          .then(res => {
-            this.planeta.push(res.data.results)
-          })
-      }
-
-      /* for (let i = 0; i > this.Personagens.length; i++) {
-        this.$axios.all([
-          this.$axios.get(this.Personagens[i].species[0]),
-          this.$axios.get(this.Personagens[i].homeworld)
-        ]).then(this.$axios.spread((especie, planeta) => {
-          this.specie = especie.data.results
-          this.planet = planeta.data.results
-
-          this.Personagens = [
-            ...this.Personagens,
-            ...this.specie,
-            ...this.planet
-          ]
-        }))
-      } */
+        .then(() => {
+          for (let i = 0; i < this.Personagens.length; i++) {
+            this.$axios.get(this.Personagens[i].homeworld)
+              .then(res => {
+                this.Personagens[i].homeworld = (res.data.name)
+              })
+              .then(() => {
+                this.$axios.get(this.Personagens[i].species)
+                  .then(res => {
+                    this.Personagens[i].species = res.data.name
+                  })
+              })
+          }
+        })
     }
   },
   beforeMount () {
