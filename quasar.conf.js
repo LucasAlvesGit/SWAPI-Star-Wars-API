@@ -34,7 +34,6 @@ module.exports = function (ctx) {
     framework: {
       iconSet: 'material-icons', // Quasar icon set
       lang: 'en-us', // Quasar language pack
-
       // Possible values for "all":
       // * 'auto' - Auto-import needed Quasar components & directives
       //            (slightly higher compile time; next to minimum bundle size; most convenient)
@@ -44,7 +43,9 @@ module.exports = function (ctx) {
       //            (not treeshaking Quasar; biggest bundle size; convenient)
       all: 'auto',
 
-      components: [],
+      components: [
+        'QPagination'
+      ],
       directives: [],
 
       // Quasar plugins

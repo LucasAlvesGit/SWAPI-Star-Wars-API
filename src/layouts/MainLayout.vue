@@ -22,15 +22,14 @@
     <q-drawer
       v-model="leftDrawerOpen"
       show-if-above
-      content-class="bg-grey-10"
+
     >
       <q-list>
         <q-item-label
           header
-          style="color: #E6CE21; font-size: 1.8em;"
         >
         </q-item-label>
-        <EssentialLink style="color: #fff; font-size: 1.25em; margin-top: 5%;"
+        <EssentialLink style="font-size: 1.25em; margin-top: 5%;"
           v-for="link in essentialLinks"
           :key="link.title"
           v-bind="link"
@@ -38,7 +37,7 @@
       </q-list>
     </q-drawer>
 
-    <q-page-container style="background-color: #333;">
+    <q-page-container>
       <router-view />
     </q-page-container>
   </q-layout>
@@ -59,28 +58,22 @@ export default {
       leftDrawerOpen: false,
       essentialLinks: [
         {
-          title: 'Home',
-          caption: '',
-          icon: 'trip_origin',
-          link: '/'
-        },
-        {
           title: 'Filmes',
           caption: 'Conheça os filmes',
           icon: 'movie_filter',
-          link: '/filmes'
+          link: 'http://localhost:8080/#/filmes'
         },
         {
           title: 'Personagens',
           caption: 'Principais personagens',
           icon: 'supervisor_account',
-          link: '/Personagens'
+          link: 'http://localhost:8080/#/personagens'
         },
         {
           title: 'Planetas',
           caption: 'Planetas da saga Star Wars',
           icon: 'public',
-          link: '/planetas'
+          link: 'http://localhost:8080/#/planetas'
         }
       ]
     }
